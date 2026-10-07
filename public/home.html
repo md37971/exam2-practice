@@ -7,13 +7,76 @@
     <title>Bootstrap Home Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="orders.js"></script>
+
+    <style>
+        #message {
+            display: inline;
+            font-size: small;
+            margin: 5px;
+        }
+
+        .formContainer {
+            padding:1.25rem;
+            border: 5px solid lightgray;
+            border-radius: 1.25rem;
+        }
+
+        #buttonText {
+            color:white;
+            text-decoration: none;
+        }
+
+        .database {
+            padding:1.25rem;
+        }
+    </style>
 </head>
 
 <body>
-    <h1>Home Page</h1>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
+    <script>
+        orderListController(); //Run the controller to fetch from the API.
+    </script>
+    
+
+    <!-- Image and text -->
+    <nav class="navbar navbar-light bg-light" style="margin-bottom: 20px">
+        <a class="navbar-brand p-2 mb-2" href="home.html">
+            Order Management System
+        </a>
+    </nav>
+
+    <div class="container">
+
+    <div class="formContainer">
+        <h3 style="margin-bottom:2.5%;">Add a New Order</h3>
+            <form id="orderForm">
+                <label for="orderDesc" class="form-label">Order Description</label><br>
+                <input type="text" id="orderDesc" name="orderDesc" class="form-control mb-3"></input>
+                <label for="quantity" class="form-label">Quantity</label><br>
+                <input type="text" id="quantity" name="quantity" class="form-control mb-3"></input>
+                <label for="unitCost" class="form-label">Unit Cost</label><br>
+                <input type="text" id="unitCost" name="unitCost" class="form-control mb-3"></input>
+                <button type="submit" id="submitButton" class="btn btn-primary" href="home.html">Add Order</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="database">
+        <div class="col">
+            <div id="message"></div>
+                <table id="orderTable" class="table table-bordered table-striped">
+                    <!--app.js code fills this table already.-->
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const submitButton = document.getElementById("submitButton");
+        submitButton.addEventListener("click",createNewOrder);
+    </script>
+</body>
 </body>
 
 </html>

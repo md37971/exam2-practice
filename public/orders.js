@@ -8,18 +8,18 @@ async function orderListController() {
 
 function orderListView(orders) {
     let table = document.getElementById("orderTable");
-    let view = `<thead><tr><th>Order ID</th>`
+    let view = `<thead><tr><th>Order ID</th>` +
                         `<th>Order Desc</th>` +
                         `<th>Quantity</th>` +
                         `<th>Unit</th>`;
 
     //JSON is a nested array, so we'll need the data tag.
-    orders.data.forEach(orders => {
+    orders.data.forEach(order => {
         view = view + 
-        `<tbody><tr><td>${orders['orderID']}</td> ` +
-        `<td>${orders['orderDesc']}</td>` +
-        `<td>${orders['quantity']}</td>` +
-        `<td>${orders['unitCost']}</td></tr></tbody>`;
+        `<tbody><tr><td>${order['orderID']}</td> ` +
+        `<td>${order['orderDesc']}</td>` +
+        `<td>${order['quantity']}</td>` +
+        `<td>${order['unitCost']}</td></tr></tbody>`;
     });
     
 
@@ -35,7 +35,7 @@ function createNewOrder() {
     let unitCost = document.getElementById("unitCost").value;
 
     const neworder = {
-        username: orderDesc,
+        orderDesc : orderDesc,
         quantity : quantity,
         unitCost : unitCost
     };
